@@ -1,0 +1,2 @@
+rootProject.name='Omikuji2'
+include ':app'
