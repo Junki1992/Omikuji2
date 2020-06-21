@@ -41,10 +41,10 @@ class Omikuji2Activity : AppCompatActivity(), SensorEventListener {
 
         manager = getSystemService((Context.SENSOR_SERVICE)) as SensorManager
 
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val value = pref.getBoolean("button", false)
-
-        button.visibility = if (value) View.VISIBLE else View.INVISIBLE
+//        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+//        val value = pref.getBoolean("button", false)
+//
+//        button.visibility = if (value) View.VISIBLE else View.INVISIBLE
         omikujiBox.omikujiView = imageView
 
         // おみくじ棚の準備
@@ -123,6 +123,11 @@ class Omikuji2Activity : AppCompatActivity(), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val value = pref.getBoolean("button", false)
+
+        button.visibility = if (value) View.VISIBLE else View.INVISIBLE
 
         val sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         manager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
